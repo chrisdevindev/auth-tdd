@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  pgsql:
+    image: postgres:alpine
+    ports:
+      - '5432:5432'
+    container_name: 'authtdd'
+    restart: always
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: pguser
+      POSTGRES_PASSWORD: pgpassword
+    networks:
+      - postgres-compose-network
+
+
+
+  pgadmin4:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "alvescastro00cca13@gmail.com"
+      PGADMIN_DEFAULT_PASSWORD: "12345"
+    ports:  
+      - "16543:80"
+    depends_on:
+      - pgsql
+    networks:
+      - postgres-compose-network
+
+
+networks: 
+  postgres-compose-network:
+    driver: bridge
+
+volumes:
+  pg-data:
