@@ -5,4 +5,6 @@ const app = require('./app')
 não for encontrada, e se ela não existit será utilizada a porta 3000 
  - Isso é muito utilizado em deploy 
  */
-app.listen(process.env.PORT || 3000)
+app.listen(process.env.PORT || 3000, () => {
+    console.log('🚀 Back-end started')
+})
