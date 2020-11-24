@@ -7,7 +7,6 @@ module.exports = async ( req, res, next ) => {
     if(!authHeader){
         return res.status(401).json({ message: 'Token not provided'})
     }
-    console.log(authHeader)
 
     const [, token] = authHeader.split(' ')
 
