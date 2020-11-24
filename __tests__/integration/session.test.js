@@ -20,6 +20,7 @@ describe("Authentication", () => {
     const user = await factory.create('User', {
       password: '123123'
     })
+    console.log(user)
 
     const respose = await request(app).post("/sessions").send({
       email: user.email,

@@ -2,11 +2,12 @@ const { request } = require("../src/app");
 
 const { factory } = require('factory-girl')
 const { User } = require('../src/app/models')
+const faker = require('faker')
 
 factory.define('User', User, {
-    name: 'Christian Castro',
-    email: 'christian.alves@dellead.com',
-    password: '123456'
+    name: faker.name.findName(),
+    email: faker.internet.email(),
+    password: faker.internet.password()
 })
 
 module.exports = factory
